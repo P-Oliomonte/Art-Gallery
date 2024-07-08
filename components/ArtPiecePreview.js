@@ -3,7 +3,8 @@ import Link from "next/link";
 
 export default function ArtPiecePreview({ artPiece }) {
   return (
-    <Link href={artPiece.slug}>
+    <>
+      {/* <Link href={artPiece.slug}> */}
       <Image
         src={artPiece.imageSource}
         alt={artPiece.imageSource}
@@ -12,6 +13,7 @@ export default function ArtPiecePreview({ artPiece }) {
       />
       <h2>{artPiece.name}</h2>
       <h3>{artPiece.artist}</h3>
-    </Link>
+      {/* </Link> */}
+    </>
   );
 }
