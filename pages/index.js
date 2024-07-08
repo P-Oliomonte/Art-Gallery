@@ -1,8 +1,8 @@
 import useSWR from "swr";
 import Image from "next/image";
 import styled from "styled-components";
-import ArtPiecePreview from "./components/ArtPiecePreview.js";
-import Spotlight from "./components/Spotlight.js";
+import ArtPiecePreview from "@/components/ArtPiecePreview";
+import Spotlight from "@/components/Spotlight";
 
 const fetcher = (url) => fetch(url).then((response) => response.json());
 
