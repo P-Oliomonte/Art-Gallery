@@ -5,8 +5,6 @@ export default function SpotlightPage({ artPieces }) {
   const randomArtPiece =
     artPieces[Math.floor(Math.random() * artPieces.length)];
 
-  console.log(artPieces);
-
   return (
     <div>
       <h1>Sylvies Lauras and Phillips Beautiful Art Gallery</h1>
