@@ -1,19 +1,32 @@
 import Image from "next/image";
 import Link from "next/link";
+import styled from "styled-components";
 
 export default function ArtPiecePreview({ artPiece }) {
   return (
     <>
       {/* <Link href={artPiece.slug}> */}
-      <Image
-        src={artPiece.imageSource}
-        alt={artPiece.imageSource}
-        width={artPiece.dimensions.width / 10}
-        height={artPiece.dimensions.height / 10}
-      />
+      <ImageContainer>
+        <StyledImage
+          src={artPiece.imageSource}
+          alt={artPiece.imageSource}
+          layout="fill"
+        />
+
+        {/* </Link> */}
+      </ImageContainer>
       <h2>{artPiece.name}</h2>
       <h3>{artPiece.artist}</h3>
-      {/* </Link> */}
     </>
   );
 }
+
+const ImageContainer = styled.div`
+  position: relative;
+  width: 400px;
+  height: 400px;
+`;
+
+const StyledImage = styled(Image)`
+  object-fit: cover;
+`;
