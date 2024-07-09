@@ -5,16 +5,15 @@ import styled from "styled-components";
 export default function ArtPiecePreview({ artPiece }) {
   return (
     <>
-      {/* <Link href={artPiece.slug}> */}
-      <ImageContainer>
-        <StyledImage
-          src={artPiece.imageSource}
-          alt={artPiece.imageSource}
-          layout="fill"
-        />
-
-        {/* </Link> */}
-      </ImageContainer>
+      <Link href={`/art-pieces/${artPiece.slug}`}>
+        <ImageContainer>
+          <StyledImage
+            src={artPiece.imageSource}
+            alt={artPiece.imageSource}
+            fill
+          />
+        </ImageContainer>
+      </Link>
       <h2>{artPiece.name}</h2>
       <h3>{artPiece.artist}</h3>
     </>

@@ -4,8 +4,8 @@ import styled from "styled-components";
 export default function Navigation() {
   return (
     <StyledNavigation>
-      <Link href="./">Home</Link>
-      <Link href="./art-pieces">Artwork List</Link>
+      <Link href="/">Home</Link>
+      <Link href="/art-pieces">Artwork List</Link>
     </StyledNavigation>
   );
 }
