@@ -6,9 +6,33 @@ import useLocalStorageState from "use-local-storage-state";
 const fetcher = (url) => fetch(url).then((response) => response.json());
 
 export default function App({ Component, pageProps }) {
-  const [favorites, setFavorites] = useLocalStorageState("history", {
-    defaultValue: [],
-  });
+  const [artPiecesInfo, setArtPiecesInfo] = useLocalStorageState(
+    "artPiecesInfo",
+    {
+      defaultValue: [],
+    }
+  );
+
+  function handleToggleFavorite(slug) {
+    console.log(artPiecesInfo);
+
+    const updatedArtPieceInfo = artPiecesInfo.map((artPieceInfo) => {
+      if (artPieceInfo.slug === slug) {
+        return { ...artPieceInfo, isFavorite: !artPieceInfo.isFavorite };
+      }
+      return artPieceInfo;
+    });
+
+    const existingPieceIndex = artPiecesInfo.findIndex(
+      (artPieceInfo) => artPieceInfo.slug === slug
+    );
+
+    if (existingPieceIndex === -1) {
+      setArtPiecesInfo([...artPiecesInfo, { slug: slug, isFavorite: true }]);
+    } else {
+      setArtPiecesInfo(updatedArtPieceInfo);
+    }
+  }
 
   const {
     data: artPieces,
@@ -23,7 +47,11 @@ export default function App({ Component, pageProps }) {
     <>
       <Layout>
         <GlobalStyle />
-        <Component {...pageProps} artPieces={artPieces} />
+        <Component
+          {...pageProps}
+          artPieces={artPieces}
+          onToggleFavorite={handleToggleFavorite}
+        />
       </Layout>
     </>
   );

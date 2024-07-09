@@ -1,5 +1,4 @@
 import Spotlight from "@/components/Spotlight";
-import ArtPieces from "@/pages/art-pieces";
 
 export default function SpotlightPage({ artPieces }) {
   const randomArtPiece =
