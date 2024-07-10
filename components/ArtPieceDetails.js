@@ -21,7 +21,7 @@ export default function ArtPieceDetails({
       </h2>
       <h3>{artist}</h3>
       <h3>{genre}</h3>
-      <FavoriteButton onClick={() => onToggleFavorite(slug, isFavorite)} />
+      <FavoriteButton />
       <StyledLink href="../art-pieces">Back to list </StyledLink>
     </>
   );

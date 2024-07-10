@@ -13,9 +13,9 @@ export default function App({ Component, pageProps }) {
     }
   );
 
-  function handleToggleFavorite(slug) {
-    console.log(artPiecesInfo);
+  console.log("HÄH?", artPiecesInfo);
 
+  function handleToggleFavorite(slug) {
     const updatedArtPieceInfo = artPiecesInfo.map((artPieceInfo) => {
       if (artPieceInfo.slug === slug) {
         return { ...artPieceInfo, isFavorite: !artPieceInfo.isFavorite };
