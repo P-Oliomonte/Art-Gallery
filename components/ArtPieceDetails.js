@@ -9,7 +9,8 @@ export default function ArtPieceDetails({
   artist,
   year,
   genre,
-  slug,
+  artPiece,
+  onToggleFavorite,
 }) {
   return (
     <>
@@ -21,7 +22,7 @@ export default function ArtPieceDetails({
       </h2>
       <h3>{artist}</h3>
       <h3>{genre}</h3>
-      <FavoriteButton />
+      <FavoriteButton onToggleFavorite={onToggleFavorite} artPiece={artPiece} />
       <StyledLink href="../art-pieces">Back to list </StyledLink>
     </>
   );

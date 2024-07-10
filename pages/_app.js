@@ -12,27 +12,7 @@ export default function App({ Component, pageProps }) {
       defaultValue: [],
     }
   );
-
-  console.log("HÄH?", artPiecesInfo);
-
-  function handleToggleFavorite(slug) {
-    const updatedArtPieceInfo = artPiecesInfo.map((artPieceInfo) => {
-      if (artPieceInfo.slug === slug) {
-        return { ...artPieceInfo, isFavorite: !artPieceInfo.isFavorite };
-      }
-      return artPieceInfo;
-    });
-
-    const existingPieceIndex = artPiecesInfo.findIndex(
-      (artPieceInfo) => artPieceInfo.slug === slug
-    );
-
-    if (existingPieceIndex === -1) {
-      setArtPiecesInfo([...artPiecesInfo, { slug: slug, isFavorite: true }]);
-    } else {
-      setArtPiecesInfo(updatedArtPieceInfo);
-    }
-  }
+  console.log("artPiecesInfo: ", artPiecesInfo);
 
   const {
     data: artPieces,
@@ -42,6 +22,27 @@ export default function App({ Component, pageProps }) {
 
   if (isLoading || !artPieces) return <h1>Loading...</h1>;
   if (error) return <h1>An error occured during fetching</h1>;
+
+  function handleToggleFavorite(slug) {
+    console.log(slug);
+    const artPiece = artPiecesInfo.find(
+      (artPieceInfo) => artPieceInfo.slug === slug
+    );
+    console.log(artPiece);
+
+    if (!artPiece) {
+      setArtPiecesInfo([...artPiecesInfo, { slug: slug, isFavorite: true }]);
+    } else {
+      // Das vorhandene artPiece aktualisieren
+      setArtPiecesInfo(
+        artPiecesInfo.map((artPieceInfo) => {
+          return artPieceInfo.slug === slug
+            ? { slug: slug, isFavorite: !artPieceInfo.isFavorite }
+            : artPieceInfo;
+        })
+      );
+    }
+  }
 
   return (
     <>
@@ -56,3 +57,23 @@ export default function App({ Component, pageProps }) {
     </>
   );
 }
+
+// function handleToggleFavorite(slug) {
+//   console.log(slug);
+//   const updatedArtPieceInfo = artPiecesInfo.map((artPieceInfo) => {
+//     if (artPieceInfo.slug === slug) {
+//       return { ...artPieceInfo, isFavorite: !artPieceInfo.isFavorite };
+//     }
+//     return artPieceInfo;
+//   });
+
+//   const existingPieceIndex = artPiecesInfo.findIndex(
+//     (artPieceInfo) => artPieceInfo.slug === slug
+//   );
+
+//   if (existingPieceIndex === -1) {
+//     setArtPiecesInfo([...artPiecesInfo, { slug: slug, isFavorite: true }]);
+//   } else {
+//     setArtPiecesInfo(updatedArtPieceInfo);
+//   }
+// }
