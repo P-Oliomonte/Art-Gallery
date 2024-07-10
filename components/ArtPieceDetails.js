@@ -1,8 +1,17 @@
 import Image from "next/image";
 import Link from "next/link";
 import styled from "styled-components";
+import FavoriteButton from "@/components/FavoriteButton";
 
-export default function ArtPieceDetails({ image, title, artist, year, genre }) {
+export default function ArtPieceDetails({
+  image,
+  title,
+  artist,
+  year,
+  genre,
+  artPiece,
+  onToggleFavorite,
+}) {
   return (
     <>
       <ImageContainer>
@@ -13,6 +22,7 @@ export default function ArtPieceDetails({ image, title, artist, year, genre }) {
       </h2>
       <h3>{artist}</h3>
       <h3>{genre}</h3>
+      <FavoriteButton onToggleFavorite={onToggleFavorite} artPiece={artPiece} />
       <StyledLink href="../art-pieces">Back to list </StyledLink>
     </>
   );
@@ -29,7 +39,9 @@ const StyledImage = styled(Image)`
 `;
 
 const StyledLink = styled(Link)`
-  display: inline-block;
+  display: block;
+  width: 150px;
+  text-align: center;
   padding: 15px;
   background-color: lightcoral;
   color: white;

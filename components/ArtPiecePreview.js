@@ -1,8 +1,9 @@
 import Image from "next/image";
 import Link from "next/link";
 import styled from "styled-components";
+import FavoriteButton from "./FavoriteButton";
 
-export default function ArtPiecePreview({ artPiece }) {
+export default function ArtPiecePreview({ artPiece, onToggleFavorite }) {
   return (
     <>
       <Link href={`/art-pieces/${artPiece.slug}`}>
@@ -14,6 +15,7 @@ export default function ArtPiecePreview({ artPiece }) {
           />
         </ImageContainer>
       </Link>
+      <FavoriteButton artPiece={artPiece} onToggleFavorite={onToggleFavorite} />
       <h2>{artPiece.name}</h2>
       <h3>{artPiece.artist}</h3>
     </>
